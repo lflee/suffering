@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Suffering</title>
+
+    <style>
+      body{
+        text-align: center;
+
+      }
+
+      #container {
+        width: auto;
+      }
+
+      #pix {
+        text-shadow: 2px 2px 2px red;
+        position: relative;
+        position: inherit;
+      }
+      #container canvas, #pix {
+
+        position: absolute;
+      }
+      #CYPix {
+        /*margin-left: auto;*/
+        margin: auto;
+      }
+
+    </style>
+
+    <script type="text/javascript">
+      function drawCanvas(){
+        console.log( "drawCanvas clicked." );
+        // document.getElementById('text').innerHTML += Math.random();
+        document.getElementById('canvas').style.backgroundColor = "red";
+
+      }
+    </script>
+
+  </head>
+  <body>
+    <div id="container">
+
+      <div id="pix">
+        <img id="CYPix" src="CY.png" width="100%" />
+        <br>
+        <div id="text">
+        Dickhead
+        </div>
+      </div>
+      <canvas id="canvas" width="100%" onclick="drawCanvas()"></canvas>
+
+    </div>
+  </body>
+</html>
