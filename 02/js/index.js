@@ -603,52 +603,52 @@ Display.prototype = {
         simulation();
 
         // Update FPS
-        setInterval(function(){
-          fpsOut.innerHTML = (1000/frameTime).toFixed(1) + " fps";
-        },1000);
+        // setInterval(function(){
+        //   fpsOut.innerHTML = (1000/frameTime).toFixed(1) + " fps";
+        // },1000);
 
         // dat.GUI Settings
-        var gui = new dat.GUI();
-                var fluidFolder = gui.addFolder("Fluid");
-
-        fluidFolder.add(fluid.settings, 'resolution', [64,128,256,512]).onFinishChange(function(e){
-            fluid.settings.resolution = parseInt(e);
-            user.initFluidWithResolution();
-        });
-
-        fluidFolder.add(fluid.settings, 'iterations', 1, 100).onFinishChange(function(e){
-            fluid.settings.iterations = parseInt(e);
-        });
-
-                fluidFolder.add(fluid.settings, 'diffusion', 0.9000000, 1.1000000)
-
-        fluidFolder.add(fluid.settings, 'dt', -1, 1).onChange(function(e){
-                fluid.calculateSettings();
-        });
-
-        fluidFolder.add(user, 'insertedDensity', 0, 200).onFinishChange(function(e){
-            user.insertedDensity = parseInt(e);
-        });
-                fluidFolder.open()
-
-                var displayFolder = gui.addFolder("Display");
-
-                displayFolder.add(user, 'displaySize', 0,900).onChange(function(e){
-                user.setDisplay(e);
-        });
-
-
-        var currColorFunc = displayFolder.add(display, 'currColorFunc', {"Black & White" : "BW", "Color" : "Color", "User Defined" : "User"});
-
-        var setColorFuncToUser = function(){
-                display.currColorFunc = "User";
-            currColorFunc.updateDisplay();
-        }
-
-                displayFolder.add(display.colorUser, 'R', 0, 1000).name("R:").onChange(setColorFuncToUser);
-                displayFolder.add(display.colorUser, 'G', 0, 1000).name("G:").onChange(setColorFuncToUser);
-                displayFolder.add(display.colorUser, 'B', 0, 1000).name("B:").onChange(setColorFuncToUser);
-                displayFolder.open();
-
-
-                gui.add(user, 'clearDisplay').name('Clear');
+        // var gui = new dat.GUI();
+        //         var fluidFolder = gui.addFolder("Fluid");
+        //
+        // fluidFolder.add(fluid.settings, 'resolution', [64,128,256,512]).onFinishChange(function(e){
+        //     fluid.settings.resolution = parseInt(e);
+        //     user.initFluidWithResolution();
+        // });
+        //
+        // fluidFolder.add(fluid.settings, 'iterations', 1, 100).onFinishChange(function(e){
+        //     fluid.settings.iterations = parseInt(e);
+        // });
+        //
+        //         fluidFolder.add(fluid.settings, 'diffusion', 0.9000000, 1.1000000)
+        //
+        // fluidFolder.add(fluid.settings, 'dt', -1, 1).onChange(function(e){
+        //         fluid.calculateSettings();
+        // });
+        //
+        // fluidFolder.add(user, 'insertedDensity', 0, 200).onFinishChange(function(e){
+        //     user.insertedDensity = parseInt(e);
+        // });
+        //         fluidFolder.open()
+        //
+        //         var displayFolder = gui.addFolder("Display");
+        //
+        //         displayFolder.add(user, 'displaySize', 0,900).onChange(function(e){
+        //         user.setDisplay(e);
+        // });
+        //
+        //
+        // var currColorFunc = displayFolder.add(display, 'currColorFunc', {"Black & White" : "BW", "Color" : "Color", "User Defined" : "User"});
+        //
+        // var setColorFuncToUser = function(){
+        //         display.currColorFunc = "User";
+        //     currColorFunc.updateDisplay();
+        // }
+        //
+        //         displayFolder.add(display.colorUser, 'R', 0, 1000).name("R:").onChange(setColorFuncToUser);
+        //         displayFolder.add(display.colorUser, 'G', 0, 1000).name("G:").onChange(setColorFuncToUser);
+        //         displayFolder.add(display.colorUser, 'B', 0, 1000).name("B:").onChange(setColorFuncToUser);
+        //         displayFolder.open();
+        //
+        //
+        //         gui.add(user, 'clearDisplay').name('Clear');
