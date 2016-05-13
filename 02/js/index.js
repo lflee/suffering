@@ -20,8 +20,8 @@ NavierStokes.prototype = {
 
         init : function(settings){
          var defaultSettings = {
-                  resolution     : 64,
-                  iterations     : 10,
+                  resolution     : 256,
+                  iterations     : 2,
                   fract          : 1/4,
                   diffusion      : 1,
                   gridmodify     : 0,
@@ -103,7 +103,7 @@ NavierStokes.prototype = {
             this.D_prev.set(this.NullArray);
             this.U_prev.set(this.NullArray);
             this.V_prev.set(this.NullArray);
-          
+
             this.settings.callbackUser(this.D_prev, this.U_prev, this.V_prev, this.settings.resolution);
         },
         vel_step : function (u, v, u0,  v0, dt ){
@@ -429,6 +429,10 @@ Display.prototype = {
                 canvas.ontouchstart = canvas.onmousedown = function(e){that.handleInput(e);};
                 canvas.ontouchmove = canvas.onmousemove = function(e){that.handleInputMove(e);};
                 canvas.oncontextmenu = function(e){e.preventDefault();};
+
+                canvas.ontouchstart = function(e){that.handleInput(e);};
+                canvas.ontouchmove  = function(e){that.handleInputMove(e);};
+                window.ontouchend   = function(e){that.handleInputEnd(e);};  
             },
             interact : function(D, U, V, size){
                     var x, y, pos, i ;
