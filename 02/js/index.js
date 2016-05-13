@@ -1,3 +1,12 @@
+// audio
+var song = new Audio();
+song.src = 'Instruments.m4a';
+
+song.autoplay = true;
+
+document.getElementById('wrapper').appendChild(song);
+
+
 // shim layer with setTimeout fallback (Paul Irish)
 window.requestAnimFrame = (function(){
   return  window.requestAnimationFrame       ||
@@ -21,11 +30,11 @@ NavierStokes.prototype = {
         init : function(settings){
          var defaultSettings = {
                   resolution     : 256,
-                  iterations     : 2,
+                  iterations     : 3,
                   fract          : 1/4,
-                  diffusion      : 1,
+                  diffusion      : 0.99,
                   gridmodify     : 0,
-                  dt             : 0.1,
+                  dt             : 0.3,
                   callbackUser : function(D, U, V, size){},
                   callbackDisplay : function(D, U, V, size){}
           };
@@ -296,15 +305,15 @@ var Display = function(canvas){
                             this.colorFunctions = {  "BW"  : this.calcColorBW ,
                                                 "Color": this.calcColor,
                                         "User" : this.calcUserColor};
-                            this.currColorFunc = "BW";
+                            this.currColorFunc = "User";
                 this.canvas = canvas;
   this.context = canvas.getContext("2d", {alpha : false});
                 this.supportImageData = !!this.context.getImageData;
 
                             this.colorUser = {
-                  R : 0,
-                  G : 255,
-                  B : 0
+                  R : 50,
+                  G : 50,
+                  B : 50
                               }
 
 };
@@ -432,7 +441,7 @@ Display.prototype = {
 
                 canvas.ontouchstart = function(e){that.handleInput(e);};
                 canvas.ontouchmove  = function(e){that.handleInputMove(e);};
-                window.ontouchend   = function(e){that.handleInputEnd(e);};  
+                window.ontouchend   = function(e){that.handleInputEnd(e);};
             },
             interact : function(D, U, V, size){
                     var x, y, pos, i ;
@@ -636,9 +645,9 @@ Display.prototype = {
             currColorFunc.updateDisplay();
         }
 
-                displayFolder.add(display.colorUser, 'R', 0, 50).name("R:").onChange(setColorFuncToUser);
+                displayFolder.add(display.colorUser, 'R', 0, 1000).name("R:").onChange(setColorFuncToUser);
                 displayFolder.add(display.colorUser, 'G', 0, 1000).name("G:").onChange(setColorFuncToUser);
-                displayFolder.add(display.colorUser, 'B', 0, 50).name("B:").onChange(setColorFuncToUser);
+                displayFolder.add(display.colorUser, 'B', 0, 1000).name("B:").onChange(setColorFuncToUser);
                 displayFolder.open();
 
 
