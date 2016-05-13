@@ -1,0 +1,9 @@
+body{
+	font-family:Helvatica, sans-serif;
+	background:url(http://codepen.io/images/classy_fabric.png); 
+  color:white;
+}
+#wrapper{
+	margin:0 auto;
+  width:500px;
+}
